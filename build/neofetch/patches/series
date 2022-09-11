@@ -1,0 +1,5 @@
+illumos-os.patch
+omnios-logo.patch
+pkg-list.patch
+solaris-fqdn.patch
+fix-uptime.patch

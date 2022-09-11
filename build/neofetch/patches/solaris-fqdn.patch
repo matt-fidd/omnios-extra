@@ -1,0 +1,27 @@
+commit 05cd70b954617a099f81ddec2cd33bdd531c6994
+Author:     matt <matt@fiddaman.net>
+AuthorDate: Mon Sep 12 19:50:58 2022 +0000
+Commit:     matt <matt@fiddaman.net>
+CommitDate: Mon Sep 12 19:51:05 2022 +0000
+
+    Fix solaris fqdn
+
+diff -wpruN '--exclude=*.orig' a~/neofetch a/neofetch
+--- a~/neofetch	1970-01-01 00:00:00
++++ a/neofetch	1970-01-01 00:00:00
+@@ -1345,8 +1345,13 @@ get_model() {
+ get_title() {
+     user=${USER:-$(id -un || printf %s "${HOME/*\/}")}
+ 
+-    case $title_fqdn in
+-        on) hostname=$(hostname -f) ;;
++    case $os-$title_fqdn in
++        illumos-on|Solaris-on)
++            hostname=$(hostname)
++            domainname=$(domainname)
++            [[ -n "$domainname" ]] && hostname+=".$domainname"
++            ;;
++        *-on) hostname=$(hostname -f) ;;
+         *)  hostname=${HOSTNAME:-$(hostname)} ;;
+     esac
+ 

@@ -1,0 +1,22 @@
+commit 9e59bc4157840af62d740697a432365e478f7ce6
+Author:     matt <matt@fiddaman.net>
+AuthorDate: Mon Sep 12 19:51:30 2022 +0000
+Commit:     matt <matt@fiddaman.net>
+CommitDate: Mon Sep 12 19:51:30 2022 +0000
+
+    Add 'pkg list' package source
+
+diff -wpruN '--exclude=*.orig' a~/neofetch a/neofetch
+--- a~/neofetch	1970-01-01 00:00:00
++++ a/neofetch	1970-01-01 00:00:00
+@@ -1551,6 +1551,10 @@ get_packages() {
+                     ((packages == 0)) && \
+                         has pkg && tot pkg list
+                 ;;
++
++                illumos-*)
++                    has pkg && tot pkg list
++                ;;
+             esac
+ 
+             # List these last as they accompany regular package managers.
